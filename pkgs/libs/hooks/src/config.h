@@ -131,7 +131,7 @@
 #include "/opt/PTLsim/ptlcalls.h"
 #endif
 
-
+#define ENABLE_M5_TRIGGER 1
 
 /** \brief Prefix for all output.
  *

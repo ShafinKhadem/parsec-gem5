@@ -45,6 +45,10 @@
 #include <stdio.h>
 #include <assert.h>
 
+#if ENABLE_M5_TRIGGER
+#include <gem5/m5ops.h>
+#endif //ENABLE_M5_TRIGGER
+
 #if ENABLE_TIMING
 #include <sys/time.h>
 /** \brief Time at beginning of execution of Region-of-Interest.
@@ -195,6 +199,10 @@ void __parsec_roi_begin() {
   #if ENABLE_PTLSIM_TRIGGER
   ptlcall_switch_to_sim();
   #endif //ENABLE_PTLSIM_TRIGGER
+
+  #if ENABLE_M5_TRIGGER
+  m5_work_begin(0,0);
+  #endif
 }
 
 
@@ -206,6 +214,10 @@ void __parsec_roi_end() {
   assert(num_roi_ends==1);
   assert(num_bench_ends==0);
   #endif //DEBUG
+
+  #if ENABLE_M5_TRIGGER
+  m5_work_end(0,0);
+  #endif
 
   #if ENABLE_SIMICS_MAGIC
   MAGIC_BREAKPOINT;
