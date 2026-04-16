@@ -172,6 +172,7 @@ void __parsec_bench_end() {
   printf(HOOKS_PREFIX" Total time spent in ROI: %.3fs\n", time_end-time_begin);
   #endif //ENABLE_TIMING
   printf(HOOKS_PREFIX" Terminating\n");
+  fflush(NULL);
 }
 
 void __parsec_roi_begin() {
