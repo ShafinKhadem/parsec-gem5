@@ -9,13 +9,13 @@ export CFLAGS=-I"'${GEM5_PATH}/include'"
 export LDFLAGS=-L"'${GEM5_PATH}/util/m5/build/${TARGET_ISA}/out'"
 ```
 
+If you wanna run standalone binary in gem5 SE mode, you need to replace all instances of `gcc.bldconf` in `gcc-hooks.bldconf` files with `gcc-serial.bldconf` and also `export CXXFLAGS='-static'`.
+
 Then after you run `. env.sh`, you'll need to pass `-c gcc-hooks` to parsecmgmt when building the benchmarks, like this:
 
 ```bash
 parsecmgmt -a build -p blackscholes -c gcc-hooks
 ```
-
-If you wanna run standalone binary in gem5 SE mode, you need to also `export CXXFLAGS='-static'`.
 
 If you want multithreaded execution, you'll probably have to build a disk image to use FS mode. To do that, you have to make use of gem5_bridge like [this](https://github.com/gem5/gem5-resources/blob/5016a0e0c7a1040ce0ca05dfc6e8b653a2081974/src/ubuntu-generic-diskimages/scripts/install-gem5-bridge.sh#L24):
 
