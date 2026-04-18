@@ -1,4 +1,4 @@
 #!/bin/bash
 
-source ${PARSECDIR}/pkgs/tools/libtool/parsec/gcc.bldconf
+source ${PARSECDIR}/pkgs/tools/libtool/parsec/gcc-serial.bldconf
 

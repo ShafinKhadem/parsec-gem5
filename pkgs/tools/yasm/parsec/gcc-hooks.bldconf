@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ${PARSECDIR}/pkgs/tools/yasm/parsec/gcc.bldconf
+source ${PARSECDIR}/pkgs/tools/yasm/parsec/gcc-serial.bldconf
 
 # Package dependencies
 # NOTE: yasm itself does not depend on hooks but the

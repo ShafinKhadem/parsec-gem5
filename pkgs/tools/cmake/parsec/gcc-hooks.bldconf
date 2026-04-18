@@ -2,7 +2,7 @@
 
 # gcc-hooks.bldconf - configuration file for PARSEC
 
-source ${PARSECDIR}/pkgs/tools/cmake/parsec/gcc.bldconf
+source ${PARSECDIR}/pkgs/tools/cmake/parsec/gcc-serial.bldconf
 
 # Package dependencies
 # NOTE: cmake itself does not depend on hooks but the

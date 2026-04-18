@@ -2,5 +2,5 @@
 
 # gcc-parmacs.bldconf - configuration file for PARSEC
 
-source ${PARSECDIR}/pkgs/libs/parmacs/parsec/gcc.bldconf
+source ${PARSECDIR}/pkgs/libs/parmacs/parsec/gcc-serial.bldconf
 

@@ -2,5 +2,5 @@
 
 # gcc-hooks.bldconf - configuration file for PARSEC
 
-source ${PARSECDIR}/pkgs/libs/libxml2/parsec/gcc.bldconf
+source ${PARSECDIR}/pkgs/libs/libxml2/parsec/gcc-serial.bldconf
 

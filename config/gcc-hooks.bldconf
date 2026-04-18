@@ -6,7 +6,7 @@
 # Copyright (C) 2006-2007 Princeton University
 # Written by Christian Bienia
 
-source ${PARSECDIR}/config/gcc.bldconf
+source ${PARSECDIR}/config/gcc-serial.bldconf
 
 # Enable PARSEC hooks
 CFLAGS="${CFLAGS} -DENABLE_PARSEC_HOOKS -I${PARSECDIR}/pkgs/libs/hooks/inst/${PARSECPLAT}/include"
