@@ -5,8 +5,22 @@ Before building parsec, run the following commands to set up the environment var
 ```bash
 export GEM5_PATH='/path/to/gem5'
 export TARGET_ISA='the_target_isa_you_want_to_use'
-export CFLAGS=-I"'${GEM5_PATH}/include'"
+export CFLAGS=-I"'${GEM5_PATH}/include' -static"
 export LDFLAGS=-L"'${GEM5_PATH}/util/m5/build/${TARGET_ISA}/out'"
+```
+
+If you wanna run binary in gem5 SE mode, you need to replace all instances of `gcc.bldconf` in `gcc-hooks.bldconf` files with `gcc-serial.bldconf`.
+If you wanna run cross-architecture binary in gem5 SE mode, you gotta pass LD_LIBRARY_PATH like this:
+
+```python
+board.set_se_binary_workload(
+    binary=BinaryResource(local_path=Path(args.binary_path).as_posix()),
+    env_list=[
+        # Set LD_LIBRARY_PATH for dynamic libraries
+        "LD_LIBRARY_PATH=/usr/aarch64-linux-gnu/lib:/lib/aarch64-linux-gnu:/lib64:/usr/lib/aarch64-linux-gnu",
+    ],
+    arguments=args.binary_args.split() if args.binary_args else [],
+)
 ```
 
 Then after you run `. env.sh`, you'll need to pass `-c gcc-hooks` to parsecmgmt when building the benchmarks, like this:
@@ -14,8 +28,6 @@ Then after you run `. env.sh`, you'll need to pass `-c gcc-hooks` to parsecmgmt 
 ```bash
 parsecmgmt -a build -p blackscholes -c gcc-hooks
 ```
-
-If you wanna run standalone binary in gem5 SE mode, you need to also `export CXXFLAGS='-static'`.
 
 If you want multithreaded execution, you'll probably have to build a disk image to use FS mode. To do that, you have to make use of gem5_bridge like [this](https://github.com/gem5/gem5-resources/blob/5016a0e0c7a1040ce0ca05dfc6e8b653a2081974/src/ubuntu-generic-diskimages/scripts/install-gem5-bridge.sh#L24):
 
